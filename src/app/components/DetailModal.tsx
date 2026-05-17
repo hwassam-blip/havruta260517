@@ -5,7 +5,7 @@ export default function DetailModal({
     comments,
     onClose,
     onPostComment
-}) {
+}: any) {
     const [commentContent, setCommentContent] = useState('');
 
     if (!question) return null;

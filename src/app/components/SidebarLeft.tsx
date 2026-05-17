@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function SidebarLeft({ keywords, currentFilter, onFilterClick }) {
+export default function SidebarLeft({ keywords, currentFilter, onFilterClick }: any) {
     return (
         <aside className="sidebar-left">
             <div className="sidebar-header">

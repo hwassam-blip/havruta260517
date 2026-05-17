@@ -7,7 +7,7 @@ export default function Feed({
     onPostQuestion,
     onCardClick,
     getCommentCount
-}) {
+}: any) {
     const [content, setContent] = useState('');
     const [keywords, setKeywords] = useState('');
 
