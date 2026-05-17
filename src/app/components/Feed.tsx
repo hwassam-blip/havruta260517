@@ -10,21 +10,15 @@ export default function Feed({
 }) {
     const [content, setContent] = useState('');
     const [keywords, setKeywords] = useState('');
-    const [author, setAuthor] = useState(''); // 작성자 이름 상태 추가
 
     const handlePost = () => {
-        if (!author.trim()) {
-            alert('작성자 이름을 입력해주세요.');
-            return;
-        }
         if (!content.trim()) {
             alert('질문 내용을 입력해주세요.');
             return;
         }
-        onPostQuestion(content, keywords, author); // author 추가 전달
+        onPostQuestion(content, keywords); // author 파라미터 삭제
         setContent('');
         setKeywords('');
-        setAuthor('');
     };
 
     const handleKeyDown = (e) => {
@@ -34,7 +28,6 @@ export default function Feed({
         }
     };
 
-    // 날짜 포맷 (예: '10월 23일 오후 2:30')
     const formatDate = (dateString) => {
         return new Date(dateString).toLocaleString('ko-KR', {
             month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
@@ -51,13 +44,6 @@ export default function Feed({
                     onKeyDown={handleKeyDown}
                 />
                 <div className="composer-actions">
-                    <input
-                        type="text"
-                        placeholder="이름"
-                        value={author}
-                        onChange={(e) => setAuthor(e.target.value)}
-                        style={{ maxWidth: '100px' }}
-                    />
                     <input
                         type="text"
                         placeholder="키워드 입력 (예: #수학 #기말고사)"

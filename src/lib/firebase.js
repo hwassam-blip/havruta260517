@@ -1,5 +1,6 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 // 선생님께서 발급받은 파이어베이스 설정값들이 들어갈 자리입니다.
 // 프로젝트 보안을 위해 이 파일에 직접 넣지 않고, .env.local 파일에서 불러옵니다.
@@ -18,5 +19,7 @@ if (firebaseConfig.projectId) {
     app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 }
 
-// 데이터베이스(Firestore) 연결 객체 (키가 없으면 연결하지 않음)
+// 데이터베이스(Firestore) 및 인증(Auth) 연결 객체 (키가 없으면 연결하지 않음)
 export const db = app ? getFirestore(app) : null;
+export const auth = app ? getAuth(app) : null;
+export const provider = new GoogleAuthProvider();
